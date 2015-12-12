@@ -1,0 +1,78 @@
+/* 
+	BASIC PAGE STYLING
+*/
+* {
+	box-sizing: border-box;
+	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* 
+	FULL SCREEN WRAP
+*/
+#wrap {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: auto; /* Prevents margin on top element from margin collapsing */
+}
+
+/* 
+	SPLIT IMAGE COMPARISION
+*/
+.split-image-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-image: url('../images/subtle-backgrounds/zwartevilt_@2X.jpg');
+	/* Prevent user from selecting images accidently */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;    
+}
+.split-image-container > figure {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden; /* Enables figure to "clip" images that they contain. */
+}
+.split-image-container > figure:first-child {
+	/* Ensures that the first figure, the one being manipulated, is placed on 
+	top of the second figure.  This way, it "reveals" the second figure. */
+	z-index: 1; 
+} 
+.split-image-container > .divider {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	height: 100%;
+	border-left: 4px solid white;
+	border-right: 4px solid white;
+	z-index: 2; /* Divider should be on top of figures */
+	box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.1);
+	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
+}
+.split-image-container > .divider > .circle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 3; /* Circle should be on top of figures */
+	cursor: move;
+}
