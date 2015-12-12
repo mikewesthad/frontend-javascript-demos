@@ -1,0 +1,85 @@
+/* 
+	BASIC PAGE STYLING
+*/
+* {
+	box-sizing: border-box;
+	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-image: url("../images/subtle-backgrounds/ps_neutral_@2X.png");
+}
+
+/* 
+	FULL SCREEN DRAGGABLE AREA
+*/
+#drag-area {
+	position: relative; /* Draggable items are positioned relative to this */
+	width: 75%;
+	height: 75%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	overflow: hidden;
+	border: 1px solid black;
+	background-color: white;
+}
+
+/* 
+	DRAGGABLE STYLING
+*/
+#drag-items > * {
+	display: inline-block;
+	vertical-align: middle;
+	width: 200px;
+	height: 200px;
+	cursor: move;
+	padding: 5px;
+	border-radius: 2px;	
+	/* Helpful Hacks for Hardware Acceleration on Mobile */
+	backface-visibility: hidden;
+	perspective: 1000;
+}
+#drag-items {
+	display: inline-block;
+	margin-top: 2.5%;
+	border-radius: 5px;
+	text-align: center; /* Center inline-block elements within drag-items */
+}
+#drop-zone {
+	position: absolute;
+	width: 210px;
+	height: 210px;
+	border: 10px dashed black;
+	border-radius: 5px;
+	left: 50%;
+	bottom: 0;
+	margin-bottom: 2.5%;
+	transform: translate(-50%, 0);
+	z-index: 0; /* Make sure drop-zone is below dragged items */
+}
+
+
+/* 
+	DRAGGABLE STYLING - MEDIA QUERY FOR SMALLER DEVICES
+*/
+@media(max-width: 1024px) {
+	#drag-items > * {
+		width: 125px;
+		height: 125px;
+	}
+	#drop-zone {
+		width: 130px;
+		height: 130px;
+		border: 7px dashed black;
+	}
+}
