@@ -15,8 +15,21 @@
 		- Only works on modern browsers.
 */
 
+// Wait until all images are loaded before starting up the split image 
+// comparison.  The scaling & centering of images will break because they need
+// for the browser to have the width & height of the image. 
 (function () {
+	var images = document.querySelectorAll(".split-image-container img");
+	var numLoaded = 0;
+	for (var i = 0; i < images.length; i += 1) {
+		images[i].addEventListener("load", function () {
+			numLoaded += 1;
+			if (numLoaded === images.length) initSplitComparision();
+		}, false);
+	}
+}());
 
+function initSplitComparision() {
 	// Get & cache DOM elements 
 	var container = document.querySelector(".split-image-container");
 	var divider = container.querySelector(".divider");
@@ -51,5 +64,4 @@
 		divider.style.left = x + "px";
 		leftFigure.style.width = x + "px";
 	}, false);
-
-}());
+}

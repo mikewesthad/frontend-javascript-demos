@@ -11,8 +11,7 @@
 	comparision.  This version allows you to place a split image container
 	anywhere on a page and at any size (within reason).  The images within the
 	container are then scaled down to fit & centered, while preserving aspect
-	ratio.  (It also deals with a rare bug that occurs when the images are 
-	scaled & centered before the images load on the page.)
+	ratio.
 
 	Requirements:
 		- No plugins necessary 
@@ -31,11 +30,9 @@
 			if (numLoaded === images.length) initSplitComparision();
 		}, false);
 	}
-
 }());
 
 function initSplitComparision() {
-
 	// Get & cache DOM elements 
 	var container = document.querySelector(".split-image-container");
 	var images = container.querySelectorAll("img");
@@ -91,5 +88,4 @@ function initSplitComparision() {
 	window.addEventListener("resize", function (e) {
 		fitImages();
 	}, false);
-
 }
